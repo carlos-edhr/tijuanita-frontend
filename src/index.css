@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "KawaiiRT";
+  src: url("./assets/fonts/KawaiiRT-MonaShine.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@theme {
+  --color-blackOlive: #3f3f3c;
+  --color-jonquil: #f8d117;
+  --color-aquamarine: #6ee1b4;
+  --color-blancoHuesoFondo: #fafafa;
+  --color-moradoSecundario: #4f6bfe;
+  --color-inchworm: #aeff61;
+
+  --font-kawaiiRT: "KawaiiRT", sans-serif;
+  --font-luckiest_guy: "Luckiest Guy", cursive;
+  
+  --color-border: oklch(0.922 0 0);
+  --color-ring: oklch(0.708 0 0);
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.145 0 0);
+
+  --color-coral: #FF6B6B;
+  --color-coral-light: #FFE8E8;
+  --color-coral-dark: #E55555;
+  --color-teal: #4ECDC4;
+  --color-teal-light: #E0F7F5;
+  --color-teal-dark: #3DBDB5;
+  --color-sunny: #FFE66D;
+  --color-sunny-light: #FFF9E0;
+  --color-sunny-dark: #E6CE50;
+  --color-mint: #00B894;
+  --color-mint-light: #E0F7EF;
+  --color-mint-dark: #009975;
+  --color-peach: #FDCB6E;
+  --color-peach-light: #FFF8E0;
+  --color-peach-dark: #E5B85A;
+  --color-rose: #E17055;
+  --color-rose-light: #FBEAE5;
+  --color-rose-dark: #C45A3F;
+  --color-charcoal: #2D3436;
+  --color-slate: #636E72;
+  --color-surface: #FFFFFF;
+  --color-warmBg: #FAFAFA;
+
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-pulse-subtle: pulse-subtle 2s infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+}
