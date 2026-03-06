@@ -2,21 +2,13 @@ import path from "path"
 import tailwindcss from "@tailwindcss/vite"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
-import { visualizer } from "rollup-plugin-visualizer"
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tailwindcss(),
-    // Bundle analyzer (enabled via ANALYZE=true env variable)
-    mode === 'production' && process.env.ANALYZE === 'true' && visualizer({
-      filename: 'dist/stats.html',
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-    })
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
