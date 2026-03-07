@@ -497,7 +497,9 @@ export const cmsService = {
   },
 
   async getTeamMembers(): Promise<CMSTeamMember[]> {
-    const response = await fetch(`${API_BASE_URL}/cms/admin/team-members/`);
+    const response = await fetch(`${API_BASE_URL}/cms/admin/team-members/`, {
+      headers: await getAuthHeaders(),
+    });
     if (!response.ok) {
       throw new Error("Failed to fetch team members");
     }

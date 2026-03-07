@@ -1,12 +1,9 @@
-/assets/*
+/index.css
+  Content-Type: text/css
+
+/assets/*.css
+  Content-Type: text/css
+
+/assets/*.js
   Content-Type: application/javascript
   X-Content-Type-Options: nosniff
-
-/*.js
-  Content-Type: application/javascript
-
-/*.wasm
-  Content-Type: application/wasm
-
-/*.css
-  Content-Type: text/css
