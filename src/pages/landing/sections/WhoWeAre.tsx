@@ -51,7 +51,7 @@ const WhoWeAre: React.FC<WhoWeAreProps> = ({ content }) => {
         if (teamSection && teamSection.members.length > 0) {
           setTeamMembers(teamSection.members);
         } else {
-          const members = await cmsService.getTeamMembers();
+          const members = await cmsService.getPublicTeamMembers();
           if (members.length > 0) {
             setTeamMembers(members);
           } else {

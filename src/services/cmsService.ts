@@ -487,23 +487,13 @@ export const cmsService = {
     return data.results?.[0] || null;
   },
 
-  async updateTeamSection(data: Partial<CMSTeamSection>): Promise<CMSTeamSection> {
-    const existing = await cmsService.getTeamSection();
-    const method = existing?.id ? "PATCH" : "POST";
-    const url = existing?.id
-      ? `${API_BASE_URL}/cms/admin/team-section/${existing.id}/`
-      : `${API_BASE_URL}/cms/admin/team-section/`;
-
-    const response = await fetch(url, {
-      method,
-      headers: await getAuthHeaders(),
-      body: JSON.stringify(data),
-    });
+  async getPublicTeamMembers(): Promise<CMSTeamMember[]> {
+    const response = await fetch(`${API_BASE_URL}/cms/team-members/`);
     if (!response.ok) {
-      const error = await response.json().catch(() => ({}));
-      throw new Error(error.detail || "Failed to update team section");
+      throw new Error("Failed to fetch team members");
     }
-    return response.json();
+    const data = await response.json();
+    return data.results || [];
   },
 
   async getTeamMembers(): Promise<CMSTeamMember[]> {
@@ -562,6 +552,15 @@ export const cmsService = {
       throw new Error(error.detail || "Failed to fetch gallery images");
     }
     return response.json();
+  },
+
+  async getPublicGalleryImages(): Promise<CMSGalleryImage[]> {
+    const response = await fetch(`${API_BASE_URL}/cms/gallery-images/`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch gallery images");
+    }
+    const data = await response.json();
+    return data.results || [];
   },
 
   async createGalleryImage(data: Partial<CMSGalleryImage>): Promise<CMSGalleryImage> {

@@ -90,7 +90,7 @@ const Gallery: React.FC<GalleryProps> = ({ content }) => {
     const fetchGalleryImages = async () => {
       try {
         setLoadingImages(true);
-        const images = await cmsService.getGalleryImages();
+        const images = await cmsService.getPublicGalleryImages();
         if (images.length > 0) {
           // Map CMSGalleryImage to GalleryItem
           const mappedImages = images
